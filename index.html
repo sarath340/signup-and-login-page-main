@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup, Login, Home</title>
+    <link rel="stylesheet" href="Signup.css">
+    <style>
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <section id="signupSection">
+        <h2>Signup Page</h2>
+        <form id="signupForm" onsubmit="return validateSignupForm(event)">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter username">
+            <span class="error" id="usernameError"></span>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter email">
+            <span class="error" id="emailError"></span>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter new password">
+            <span class="error" id="passwordError"></span>
+
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+        <p class="pk" id="101" style="color: white;">This content is developed by <strong>SARATH KUMAR R </strong></p>
+    </section>
+
+  
+    <section id="loginSection" class="hidden">
+        <h2>Login Page</h2>
+        <form id="loginForm" onsubmit="return validateLoginForm(event)">
+            <label for="loginUsername">Username:</label>
+            <input type="text" id="loginUsername" name="loginUsername" placeholder="Enter username">
+            <span class="error" id="loginUsernameError"></span>
+
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" name="loginPassword" placeholder="Enter password">
+            <span class="error" id="loginPasswordError"></span>
+
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="#" onclick="showSignup()">Sign up here</a></p>
+        <p class="pk" id="101">This content is developed by <strong>SARATH KUMAR R</strong></p>
+    </section>
+
+    <section id="homeSection" class="hidden">
+        <h1>Welcome to the Home Page!</h1>
+        <p>You are now logged in!</p>
+    </section>
+
+    <script>
+       
+        function showSignup() {
+            document.getElementById("signupSection").classList.remove("hidden");
+            document.getElementById("loginSection").classList.add("hidden");
+            document.getElementById("homeSection").classList.add("hidden");
+        }
+
+        // Function to show the login section
+        function showLogin() {
+            document.getElementById("signupSection").classList.add("hidden");
+            document.getElementById("loginSection").classList.remove("hidden");
+            document.getElementById("homeSection").classList.add("hidden");
+        }
+
+        // Function to show the home section
+        function showHome() {
+            document.getElementById("signupSection").classList.add("hidden");
+            document.getElementById("loginSection").classList.add("hidden");
+            document.getElementById("homeSection").classList.remove("hidden");
+        }
+
+        // Validate Signup Form
+        function validateSignupForm(event) {
+            let isValid = true;
+
+            document.getElementById("usernameError").textContent = '';
+            document.getElementById("emailError").textContent = '';
+            document.getElementById("passwordError").textContent = '';
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (username === "") {
+                document.getElementById('usernameError').textContent = "Username is required.";
+                isValid = false;
+            }
+
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (email === "") {
+                document.getElementById('emailError').textContent = "Email is required.";
+                isValid = false;
+            } else if (!emailPattern.test(email)) {
+                document.getElementById('emailError').textContent = "Please enter a valid email.";
+                isValid = false;
+            }
+
+            if (password === "") {
+                document.getElementById('passwordError').textContent = "Password is required.";
+                isValid = false;
+            } else if (password.length < 6) {
+                document.getElementById('passwordError').textContent = "Password must be at least 6 characters long.";
+                isValid = false;
+            }
+
+            if (isValid) {
+                event.preventDefault();
+                alert("Sign-up successful! Please login.");
+                showLogin();
+            }
+
+            return isValid;
+        }
+
+        // Validate Login Form
+        function validateLoginForm(event) {
+            let isValid = true;
+
+            document.getElementById("loginUsernameError").textContent = '';
+            document.getElementById("loginPasswordError").textContent = '';
+
+            const loginUsername = document.getElementById('loginUsername').value;
+            const loginPassword = document.getElementById('loginPassword').value;
+
+            if (loginUsername === "") {
+                document.getElementById('loginUsernameError').textContent = "Username is required.";
+                isValid = false;
+            }
+
+            if (loginPassword === "") {
+                document.getElementById('loginPasswordError').textContent = "Password is required.";
+                isValid = false;
+            }
+
+            if (isValid) {
+                event.preventDefault();
+                alert("Login successful!");
+                showHome();
+            }
+
+            return isValid;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+/* General styles for the page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: rgb(2,0,36);
+    background-color: rgba(0, 153, 255, 0.658);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+   
+}
+
+h2, h1 {
+    color: #333;
+    text-align: center;
+    position: relative;
+    top: 70px;
+}
+
+p {
+    text-align: center;
+    font-size: 14px;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    
+}
+ p .pk{
+    color: #000;
+}
+strong{
+    color: #ffffff;
+}
+
+/* Form styling */
+form {
+    background-color: rgba(255, 255, 255, 0.5); /* White background with 50% transparency */
+    background-image: none;
+    
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 95%;
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0092cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0f69c4;
+}
+
+/* Error message styling */
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: -10px;
+}
+
+/* Section visibility */
+.hidden {
+    display: none;
+}
+
+/* Styling for the footer */
+.pk {
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+    margin-top: 20px;
+}
+
+/* Responsive design with media queries */
+@media screen and (max-width: 768px) {
+    /* Adjust form width on smaller screens */
+    form {
+        width: 90%;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Even smaller screen adjustments */
+    form {
+        width: 95%;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+
+    .error {
+        font-size: 10px;
+    }
+}
